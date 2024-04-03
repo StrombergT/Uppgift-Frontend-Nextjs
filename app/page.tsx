@@ -54,10 +54,10 @@ const Homepage: React.FC = async () => {
   const startpage = data?.startpage;
 
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full min-h-[200vh] ">
       {startpage && (
         <>
-          <div>
+          <div className="">
             <Image data={startpage.mainImage.responsiveImage} />
             <h2>{startpage.title}</h2>
             <StructuredText data={startpage.content.value} />
