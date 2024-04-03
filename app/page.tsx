@@ -27,7 +27,7 @@ interface QueryResult {
   startpage: Startpage;
 }
 */
-const Homepage: React.FC = async () => {
+const Homepage = async () => {
   const query = `
     query Homepage {
       startpage {

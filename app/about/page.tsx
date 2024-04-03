@@ -1,7 +1,26 @@
-import React from "react";
+import request from "../lib/datocms";
+import { Image } from "react-datocms";
 
-const page = () => {
-  return <div>page</div>;
+const Aboutpage = async () => {
+  const query = `
+  query Aboutpage {
+    page {
+      title
+      mainImage {
+        width
+        height
+        responsiveImage {
+          src
+          srcSet
+          width
+          height
+        }
+      }
+    }
+  }
+  `;
+
+  return <div>about page</div>;
 };
 
-export default page;
+export default Aboutpage;
