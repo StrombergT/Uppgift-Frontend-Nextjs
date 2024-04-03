@@ -15,3 +15,5 @@ const request: React.FC<performRequest> = ({ query, variables, preview }) => {
   });
   return client.request(query, variables);
 };
+
+export default request;
