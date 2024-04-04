@@ -2,10 +2,10 @@ import request from "@/app/lib/datocms";
 import React from "react";
 import { Image, StructuredText } from "react-datocms";
 
-const ProductPage = async () => {
+const ProductPage = async ({ params }: { params: { id: string } }) => {
   const query = `
     query Productpage {
-        product {
+        product (filter: {id: {eq: "${params.id}"}}) {
           name
           id
           price
@@ -36,8 +36,6 @@ const ProductPage = async () => {
     query,
     preview: false,
   });
-
-  console.log(data);
 
   const product = data?.product;
   return (
