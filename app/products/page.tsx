@@ -52,14 +52,14 @@ const Productspage = async () => {
       }
     `;
 
-  const { allProducts }: { allProducts: Product[] } = await request({
+  const { allProducts }: any = await request({
     query,
     preview: false,
   });
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 container mx-auto">
-      {allProducts.map((product) => (
+      {allProducts.map((product: any) => (
         <div
           key={product.id}
           className="border p-4 rounded-md shadow-md cursor-pointer"

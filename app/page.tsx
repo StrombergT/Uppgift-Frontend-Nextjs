@@ -2,31 +2,6 @@ import React from "react";
 import { Image, StructuredText } from "react-datocms";
 import request from "./lib/datocms";
 
-/*
-interface ResponsiveImage {
-  src: string;
-  srcSet: string;
-  height: number;
-  width: number;
-}
-
-interface Content {
-  value: string;
-}
-
-interface Startpage {
-  title: string;
-  id: string;
-  mainImage: {
-    responsiveImage: ResponsiveImage;
-  };
-  content: Content[];
-}
-
-interface QueryResult {
-  startpage: Startpage;
-}
-*/
 const Homepage = async () => {
   const query = `
     query Homepage {
@@ -47,7 +22,7 @@ const Homepage = async () => {
       }
     }`;
 
-  const data = await request({
+  const data: any = await request({
     query,
     preview: false,
   });
@@ -58,7 +33,13 @@ const Homepage = async () => {
       {startpage && (
         <>
           <div className="">
-            <Image data={startpage.mainImage.responsiveImage} />
+            <Image
+              data={startpage.mainImage.responsiveImage}
+              style={{
+                height: "100vh",
+                backgroundSize: "100%",
+              }}
+            />
             <h2>{startpage.title}</h2>
             <StructuredText data={startpage.content.value} />
           </div>
