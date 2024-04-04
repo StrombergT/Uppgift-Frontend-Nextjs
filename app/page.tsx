@@ -29,18 +29,17 @@ const Homepage = async () => {
   const startpage = data?.startpage;
 
   return (
-    <div className="w-full min-h-[200vh] ">
+    <div className="container mx-auto p-4 ">
       {startpage && (
         <>
-          <div className="">
+          <div className="w-full mx-auto">
             <Image
               data={startpage.mainImage.responsiveImage}
-              style={{
-                height: "100vh",
-                backgroundSize: "100%",
-              }}
+              className="mb-4"
             />
-            <h2>{startpage.title}</h2>
+            <h1 className="text-6xl font-bold mb-6 text-center">
+              {startpage.title}
+            </h1>
             <StructuredText data={startpage.content.value} />
           </div>
         </>
