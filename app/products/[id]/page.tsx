@@ -1,5 +1,6 @@
 import request from "@/app/lib/datocms";
 import React from "react";
+import { Image, StructuredText } from "react-datocms";
 
 const ProductPage = async () => {
   const query = `
@@ -38,9 +39,17 @@ const ProductPage = async () => {
 
   console.log(data);
 
-  const product = data?.productpage;
-
-  return <div>Product page</div>;
+  const product = data?.product;
+  return (
+    <div className="container mx-auto p-4 py-8">
+      <Image
+        data={product.mainImage.responsiveImage}
+        className="mb-4 rounded-xl"
+      />
+      <h2 className="text-2xl font-bold mb-2">{product.name}</h2>
+      <StructuredText data={product.description.value} />
+    </div>
+  );
 };
 
 export default ProductPage;
