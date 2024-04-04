@@ -44,7 +44,7 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
         data={product.mainImage.responsiveImage}
         className="mb-4 rounded-xl"
       />
-      <div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {product.alternativeImages.map((image: any, index: number) => (
           <div key={index}>
             <Image data={image.responsiveImage} />
