@@ -46,6 +46,13 @@ const ProductPage = async () => {
         data={product.mainImage.responsiveImage}
         className="mb-4 rounded-xl"
       />
+      <div>
+        {product.alternativeImages.map((image: any, index: number) => (
+          <div key={index}>
+            <Image data={image.responsiveImage} />
+          </div>
+        ))}
+      </div>
       <h2 className="text-2xl font-bold mb-2">{product.name}</h2>
       <StructuredText data={product.description.value} />
     </div>
