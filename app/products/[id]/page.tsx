@@ -13,7 +13,7 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
             value
           }
           mainImage {
-            responsiveImage(imgixParams: {fit: crop, auto: format}) {
+            responsiveImage(imgixParams: {fit: crop, auto: format, w: 600, h:450}) {
               src
               srcSet
               width
@@ -40,19 +40,30 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
   const product = data?.product;
   return (
     <div className="container mx-auto p-4 py-8">
-      <Image
-        data={product.mainImage.responsiveImage}
-        className="mb-4 rounded-xl"
-      />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {product.alternativeImages.map((image: any, index: number) => (
-          <div key={index}>
-            <Image data={image.responsiveImage} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="mb-4">
+          <Image
+            data={product.mainImage.responsiveImage}
+            className="rounded-xl w-full sm:w-auto"
+          />
+        </div>
+        <div className="sm:col-span-1">
+          <h2 className="text-2xl font-bold mb-2">{product.name}</h2>
+          <StructuredText data={product.description.value} />
+          <div>
+            <button className="bg-[#0c2d48] text-white py-4 px-8 uppercase mt-4">
+              Add to cart
+            </button>
           </div>
-        ))}
+        </div>
+        <div className="sm:col-span-1 grid grid-cols-3 gap-4">
+          {product.alternativeImages.map((image: any, index: number) => (
+            <div key={index}>
+              <Image data={image.responsiveImage} className="w-full" />
+            </div>
+          ))}
+        </div>
       </div>
-      <h2 className="text-2xl font-bold mb-2">{product.name}</h2>
-      <StructuredText data={product.description.value} />
     </div>
   );
 };

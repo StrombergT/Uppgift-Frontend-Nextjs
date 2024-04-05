@@ -41,7 +41,7 @@ const Productspage = async () => {
             title
             width
             height
-            responsiveImage {
+            responsiveImage(imgixParams: {fit: crop, auto: format, w: 500, h:350}) {
               src
               srcSet
               width
