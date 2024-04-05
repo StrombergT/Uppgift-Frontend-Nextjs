@@ -50,6 +50,9 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
         <div className="sm:col-span-1">
           <h2 className="text-2xl font-bold mb-2">{product.name}</h2>
           <StructuredText data={product.description.value} />
+          <h3 className="text-gray-700 mt-2 text-2xl font-bold">
+            ${product.price}
+          </h3>
           <div>
             <button className="bg-[#0c2d48] text-white py-4 px-8 uppercase mt-4">
               Add to cart
