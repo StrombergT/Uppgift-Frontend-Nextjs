@@ -1,4 +1,4 @@
-import request from "../lib/datocms";
+import request from "../../src/lib/datocms";
 import { Image, StructuredText } from "react-datocms";
 
 const Aboutpage = async () => {

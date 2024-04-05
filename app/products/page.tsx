@@ -1,5 +1,5 @@
 import React from "react";
-import request from "../lib/datocms";
+import request from "../../src/lib/datocms";
 import { Image, StructuredText } from "react-datocms";
 import Link from "next/link";
 
