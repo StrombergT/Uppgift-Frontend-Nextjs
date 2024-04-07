@@ -2,6 +2,22 @@ import React from "react";
 import { Image, StructuredText } from "react-datocms";
 import request from "../src/lib/datocms";
 
+interface StartPage {
+  title: string;
+  id: string;
+  mainImage: {
+    responsiveImage: {
+      src: string;
+      srcSet: string;
+      height: number;
+      width: number;
+    };
+  };
+  content: {
+    value: any;
+  };
+}
+
 const Homepage = async () => {
   const query = `
     query Homepage {
@@ -22,7 +38,7 @@ const Homepage = async () => {
       }
     }`;
 
-  const data: any = await request({
+  const data = await request<{ startpage: StartPage }>({
     query,
     preview: false,
   });

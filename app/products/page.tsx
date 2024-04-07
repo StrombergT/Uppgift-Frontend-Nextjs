@@ -1,6 +1,6 @@
 import React from "react";
 import request from "../../src/lib/datocms";
-import { Image, StructuredText } from "react-datocms";
+import { Image } from "react-datocms";
 import Link from "next/link";
 
 interface Product {
@@ -53,14 +53,15 @@ const Productspage = async () => {
       }
     `;
 
-  const { allProducts }: any = await request({
+  const data = await request<{ allProducts: Product[] }>({
     query,
     preview: false,
   });
+  const products: Product[] = data.allProducts;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 container mx-auto">
-      {allProducts.map((product: Product) => (
+      {products.map((product) => (
         <Link key={product.id} href={`/products/${product.id}`}>
           <div className="border p-4 rounded-md shadow-md cursor-pointer">
             <Image
