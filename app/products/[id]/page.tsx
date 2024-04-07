@@ -1,31 +1,6 @@
 import request from "@/src/lib/datocms";
-import React from "react";
+import { Product } from "@/src/types";
 import { Image, StructuredText } from "react-datocms";
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  description: {
-    value: any;
-  };
-  mainImage: {
-    responsiveImage: {
-      height: number;
-      width: number;
-      srcSet: string;
-      src: string;
-    };
-  };
-  alternativeImages: {
-    responsiveImage: {
-      height: number;
-      width: number;
-      srcSet: string;
-      src: string;
-    };
-  }[];
-}
 
 const ProductPage = async ({ params }: { params: { id: string } }) => {
   const query = `

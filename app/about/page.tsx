@@ -1,21 +1,6 @@
 import request from "../../src/lib/datocms";
+import { AboutPage } from "@/src/types";
 import { Image, StructuredText } from "react-datocms";
-
-interface AboutPage {
-  title: string;
-  id: string;
-  mainImage: {
-    responsiveImage: {
-      src: string;
-      srcSet: string;
-      height: number;
-      width: number;
-    };
-  };
-  content: {
-    value: any;
-  };
-}
 
 const Aboutpage = async () => {
   const query = `
