@@ -3,9 +3,12 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { BsBag } from "react-icons/bs";
 import ShoppingCart from "./ShoppingCart";
+import { useRecoilValue } from "recoil";
+import { cartState } from "../recoil";
 
 const Nav = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const cartItems = useRecoilValue(cartState);
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
@@ -15,6 +18,10 @@ const Nav = () => {
     setIsCartOpen(false);
   };
 
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
   return (
     <>
       <div className="bg-white shadow-lg sticky top-0 py-4 z-40">
@@ -41,7 +48,7 @@ const Nav = () => {
               <BsBag className="text-[26px] cursor-pointer" />
             </button>
             <div className="bg-red-500 w-[18px] h-[18px] absolute -right-1 -bottom-1 rounded-full text-white flex items-center justify-center text-sm font-medium">
-              3
+              {totalQuantity}
             </div>
           </div>
         </div>
