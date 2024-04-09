@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Nav from "../src/components/Nav";
+import RecoilContextProvider from "@/src/context/RecoilContextProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,8 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.variable}>
-        <Nav />
-        {children}
+        <RecoilContextProvider>
+          <Nav />
+          {children}
+        </RecoilContextProvider>
       </body>
     </html>
   );
