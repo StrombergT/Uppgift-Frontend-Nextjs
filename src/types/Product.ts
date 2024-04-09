@@ -21,4 +21,5 @@ export type Product = {
       src: string;
     };
   }[];
+  quantity: number;
 };
