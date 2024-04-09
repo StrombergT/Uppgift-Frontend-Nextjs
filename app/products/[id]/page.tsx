@@ -65,7 +65,7 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
             ${product.price}
           </h3>
           <div>
-            <AddToCart />
+            <AddToCart product={product} />
           </div>
         </div>
         <div className="sm:col-span-1 grid grid-cols-3 gap-4">
