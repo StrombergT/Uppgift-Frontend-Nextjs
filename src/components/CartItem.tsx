@@ -4,6 +4,7 @@ import { Image } from "react-datocms";
 import { FaTrash } from "react-icons/fa";
 import { useRecoilState } from "recoil";
 import { cartState } from "../recoil/state/atoms";
+import { formatCurrency } from "../utilities/formatCurrency";
 
 type CartItemProps = {
   product: Product;
@@ -24,7 +25,7 @@ const CartItem = ({ product, removeButton = true }: CartItemProps) => {
       <div className="flex flex-col justify-center items-center">
         <h3 className="font-semibold">{product.name}</h3>
         <p className="text-gray-500">
-          ${product.price} <span> x {product.quantity}</span>
+          {formatCurrency(product.price)} <span> x {product.quantity}</span>
         </p>
       </div>
       <div>
