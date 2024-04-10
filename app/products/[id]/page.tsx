@@ -1,6 +1,7 @@
 import AddToCart from "@/src/components/AddToCart";
 import request from "@/src/lib/datocms";
 import { Product } from "@/src/types";
+import { formatCurrency } from "@/src/utilities/formatCurrency";
 import Link from "next/link";
 import { Image, StructuredText } from "react-datocms";
 import { CgChevronLeft } from "react-icons/cg";
@@ -62,7 +63,7 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
           <h2 className="text-4xl font-bold mx-auto my-8">{product.name}</h2>
           <StructuredText data={product.description.value} />
           <h3 className="text-gray-700 mt-2 text-2xl font-bold">
-            ${product.price}
+            {formatCurrency(product.price)}
           </h3>
           <div>
             <AddToCart product={product} />

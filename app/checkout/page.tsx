@@ -5,6 +5,7 @@ import CartItem from "@/src/components/CartItem";
 import { useRecoilValue } from "recoil";
 import { Product } from "@/src/types";
 import { cartState, getCartValue } from "@/src/recoil/state/atoms";
+import { formatCurrency } from "@/src/utilities/formatCurrency";
 
 const CheckoutPage = () => {
   const cartItems = useRecoilValue<Product[]>(cartState);
@@ -30,7 +31,7 @@ const CheckoutPage = () => {
       </div>
       <div className="flex-grow">
         <div className="text-2xl font-bold mb-4 justify-center">
-          Total Price: {totalPrice}$
+          Total Price: {formatCurrency(totalPrice)}
         </div>
         <Link href="/">
           <button className="text-blue-500 hover:underline">

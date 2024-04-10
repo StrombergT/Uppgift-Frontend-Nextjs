@@ -2,6 +2,7 @@ import request from "../../src/lib/datocms";
 import Link from "next/link";
 import { Image } from "react-datocms";
 import { Product } from "@/src/types";
+import { formatCurrency } from "@/src/utilities/formatCurrency";
 
 const Productspage = async () => {
   const query = `
@@ -47,7 +48,9 @@ const Productspage = async () => {
               className="w-full h-auto mb-4"
             />
             <h2 className="text-xl font-semibold mb-1">{product.name}</h2>
-            <h3 className="text-gray-300 mb-2">${product.price}</h3>
+            <h3 className="text-gray-300 mb-2">
+              {formatCurrency(product.price)}
+            </h3>
           </div>
         </Link>
       ))}

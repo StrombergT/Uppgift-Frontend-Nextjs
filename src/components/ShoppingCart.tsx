@@ -5,6 +5,7 @@ import CartItem from "./CartItem";
 import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { formatCurrency } from "../utilities/formatCurrency";
 
 type ShoppingCartProps = {
   isOpen: boolean;
@@ -48,7 +49,7 @@ const ShoppingCart = ({ isOpen, closeCart }: ShoppingCartProps) => {
         <>
           <div className="absolute bottom-10 left-0 right-0">
             <div className="p-4 font-primary font-semibold text-xl justify-center text-center">
-              Total Price: ${totalPrice}
+              Total Price: {formatCurrency(totalPrice)}
               <hr />
             </div>
             <Link href="/checkout">
