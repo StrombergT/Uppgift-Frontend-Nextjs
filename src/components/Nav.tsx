@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { BsBag } from "react-icons/bs";
 import ShoppingCart from "./ShoppingCart";
 import { useRecoilValue } from "recoil";
-import { cartState } from "../recoil";
+import { cartState } from "../recoil/state/atoms";
 
 const Nav = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -47,9 +47,11 @@ const Nav = () => {
             <button onClick={toggleCart}>
               <BsBag className="text-[26px] cursor-pointer" />
             </button>
-            <div className="bg-red-500 w-[18px] h-[18px] absolute -right-1 -bottom-1 rounded-full text-white flex items-center justify-center text-sm font-medium">
-              {totalQuantity}
-            </div>
+            {totalQuantity > 0 && (
+              <div className="bg-red-500 w-[18px] h-[18px] absolute -right-1 -bottom-1 rounded-full text-white flex items-center justify-center text-sm font-medium">
+                {totalQuantity}
+              </div>
+            )}
           </div>
         </div>
       </div>
