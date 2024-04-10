@@ -3,14 +3,15 @@ import { Product } from "../types";
 import { Image } from "react-datocms";
 import { FaTrash } from "react-icons/fa";
 import { useRecoilState } from "recoil";
-import { cartState } from "../recoil";
+import { cartState } from "../recoil/state/atoms";
 
 type CartItemProps = {
   product: Product;
+  removeButton: boolean;
 };
 
-const CartItem = ({ product }: CartItemProps) => {
-  const [cartItems, setCartItems] = useRecoilState<Product[]>(cartState);
+const CartItem = ({ product, removeButton = true }: CartItemProps) => {
+  const [cartItems, setCartItems] = useRecoilState(cartState);
 
   const removeFromCart = () => {
     setCartItems(cartItems.filter((item) => item.id !== product.id));
@@ -20,16 +21,18 @@ const CartItem = ({ product }: CartItemProps) => {
       <div className="w-20 h-20 mr-4">
         <Image data={product.mainImage.responsiveImage} />
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col justify-center items-center">
         <h3 className="font-semibold">{product.name}</h3>
         <p className="text-gray-500">
           ${product.price} <span> x {product.quantity}</span>
         </p>
       </div>
       <div>
-        <button onClick={removeFromCart}>
-          <FaTrash />
-        </button>
+        {removeButton && (
+          <button onClick={removeFromCart}>
+            <FaTrash />
+          </button>
+        )}
       </div>
     </div>
   );
