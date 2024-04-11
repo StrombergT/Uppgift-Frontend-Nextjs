@@ -1,20 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import CartItem from "@/src/components/CartItem";
 import { useRecoilValue } from "recoil";
 import { Product } from "@/src/types";
-import { cartState, getCartValue } from "@/src/recoil/state/atoms";
+import { cartState } from "@/src/recoil/state/atoms";
 import { formatCurrency } from "@/src/utilities/formatCurrency";
+import { shoppingCartTotalState } from "@/src/recoil/state/selectors/shopping-cart-total";
 
 const CheckoutPage = () => {
   const cartItems = useRecoilValue<Product[]>(cartState);
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  useEffect(() => {
-    let tempTotal = getCartValue(cartItems);
-    setTotalPrice(tempTotal);
-  }, [cartItems]);
+  const totalPrice = useRecoilValue(shoppingCartTotalState);
 
   return (
     <div className="container mx-auto p-4 flex flex-col items-center justify-center min-h-screen text-center">
