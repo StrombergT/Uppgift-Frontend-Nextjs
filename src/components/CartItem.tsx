@@ -2,9 +2,8 @@ import React from "react";
 import { Product } from "../types";
 import { Image } from "react-datocms";
 import { FaTrash } from "react-icons/fa";
-import { useRecoilState } from "recoil";
-import { cartState } from "../recoil/state/atoms";
 import { formatCurrency } from "../utilities/formatCurrency";
+import { useRemoveFromCart } from "../hooks/useRemoveFromCart";
 
 type CartItemProps = {
   product: Product;
@@ -12,14 +11,14 @@ type CartItemProps = {
 };
 
 const CartItem = ({ product, removeButton = true }: CartItemProps) => {
-  const [cartItems, setCartItems] = useRecoilState(cartState);
+  const removeFromCart = useRemoveFromCart();
 
-  const removeFromCart = () => {
-    setCartItems(cartItems.filter((item) => item.id !== product.id));
+  const handleRemoveFromCart = () => {
+    removeFromCart(product.id);
   };
   return (
-    <div className="flex justify-between items-center my-2 border-b border-gray-200 pb-2">
-      <div className="w-20 h-20 mr-4">
+    <div className="flex justify-between items-center my-2 border-b border-gray-200 ">
+      <div className="w-16 h-16 mr-4">
         <Image data={product.mainImage.responsiveImage} />
       </div>
       <div className="flex flex-col justify-center items-center">
@@ -30,7 +29,7 @@ const CartItem = ({ product, removeButton = true }: CartItemProps) => {
       </div>
       <div>
         {removeButton && (
-          <button onClick={removeFromCart}>
+          <button onClick={handleRemoveFromCart}>
             <FaTrash />
           </button>
         )}
