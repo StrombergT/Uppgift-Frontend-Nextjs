@@ -1,11 +1,11 @@
 "use client";
 import { useRecoilValue } from "recoil";
-import { cartState } from "../recoil/state/atoms";
 import CartItem from "./CartItem";
 import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
 import { formatCurrency } from "../utilities/formatCurrency";
 import { shoppingCartTotalState } from "../recoil/state/selectors/shopping-cart-total";
+import { useShoppingCartProducts } from "../hooks/useShoppingCartProducts";
 
 type ShoppingCartProps = {
   isOpen: boolean;
@@ -13,7 +13,7 @@ type ShoppingCartProps = {
 };
 
 const ShoppingCart = ({ isOpen, closeCart }: ShoppingCartProps) => {
-  const cartItems = useRecoilValue(cartState);
+  const cartItems = useShoppingCartProducts();
   const totalPrice = useRecoilValue(shoppingCartTotalState);
 
   return (
