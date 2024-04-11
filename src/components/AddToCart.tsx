@@ -53,7 +53,7 @@ const AddToCart = ({ product }: AddToCartProps) => {
       <div
         className={`${
           errorMessage ? "block" : "hidden"
-        } text-red-500 transition duration-500 ease-in-out`}
+        } text-red-500 transition duration-500 ease-in-out ml-5 border-2 border-red-500 rounded-md px-2 py-2`}
       >
         {errorMessage}
       </div>
