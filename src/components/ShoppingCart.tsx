@@ -1,11 +1,11 @@
 "use client";
 import { useRecoilValue } from "recoil";
-import { cartState, getCartValue } from "../recoil/state/atoms";
+import { cartState } from "../recoil/state/atoms";
 import CartItem from "./CartItem";
 import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { formatCurrency } from "../utilities/formatCurrency";
+import { shoppingCartTotalState } from "../recoil/state/selectors/shopping-cart-total";
 
 type ShoppingCartProps = {
   isOpen: boolean;
@@ -14,16 +14,11 @@ type ShoppingCartProps = {
 
 const ShoppingCart = ({ isOpen, closeCart }: ShoppingCartProps) => {
   const cartItems = useRecoilValue(cartState);
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  useEffect(() => {
-    let tempTotal = getCartValue(cartItems);
-    setTotalPrice(tempTotal);
-  }, [cartItems]);
+  const totalPrice = useRecoilValue(shoppingCartTotalState);
 
   return (
     <div
-      className={`fixed top-0 right-0 h-[70vh] w-80 bg-white z-50 transform transition-transform duration-300 rounded-lg mt-0 ${
+      className={`fixed top-0 right-0 h-full w-80 bg-white z-50 transform transition-transform duration-300 rounded-lg mt-0 ${
         isOpen ? "translate-x-0" : "translate-x-full"
       }`}
     >
@@ -50,7 +45,6 @@ const ShoppingCart = ({ isOpen, closeCart }: ShoppingCartProps) => {
           <div className="absolute bottom-10 left-0 right-0">
             <div className="p-4 font-primary font-semibold text-xl justify-center text-center">
               Total Price: {formatCurrency(totalPrice)}
-              <hr />
             </div>
             <Link href="/checkout">
               <button className="bg-blue-500 hover:bg-blue-600 text-white rounded-full py-3 px-6 w-full ml-5 max-w-[280px] uppercase mt-5">
