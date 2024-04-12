@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Nav from "../src/components/Nav";
 import RecoilContextProvider from "@/src/context/RecoilContextProvider";
+import Footer from "@/src/components/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
         <RecoilContextProvider>
           <Nav />
           {children}
+          <Footer />
         </RecoilContextProvider>
       </body>
     </html>

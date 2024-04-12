@@ -39,22 +39,39 @@ const Productspage = async () => {
   const products: Product[] = data.allProducts;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 container mx-auto">
-      {products.map((product) => (
-        <Link key={product.id} href={`/products/${product.id}`}>
-          <div className="border p-4 rounded-md shadow-md cursor-pointer">
-            <Image
-              data={product.mainImage.responsiveImage}
-              className="w-full h-auto mb-4"
-            />
-            <h2 className="text-xl font-semibold mb-1">{product.name}</h2>
-            <h3 className="text-gray-300 mb-2">
-              {formatCurrency(product.price)}
-            </h3>
-          </div>
-        </Link>
-      ))}
-    </div>
+    <section className="bg-gray-50 dark:bg-gray-800">
+      <div className="max-w-screen-xl px-4 py-8 mx-auto lg:py-24 lg:px-6">
+        <div className="max-w-screen-md mx-auto mb-8 text-center lg:mb-12">
+          <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            Products
+          </h2>
+          <p className="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam
+            maxime fugit quas neque perspiciatis cupiditate unde voluptatibus
+            sunt nesciunt, nihil magnam commodi beatae corrupti expedita
+            deleniti cumque dolores illo qui?
+          </p>
+        </div>
+        <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
+          {products.map((product) => (
+            <Link key={product.id} href={`/products/${product.id}`}>
+              <div className="border p-4 rounded-md shadow-md cursor-pointer">
+                <Image
+                  data={product.mainImage.responsiveImage}
+                  className="w-full h-auto mb-4"
+                />
+                <h2 className="text-xl font-semibold mb-1 text-white">
+                  {product.name}
+                </h2>
+                <h3 className="text-gray-300 mb-2">
+                  {formatCurrency(product.price)}
+                </h3>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
