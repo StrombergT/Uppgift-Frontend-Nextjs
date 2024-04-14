@@ -31,7 +31,7 @@ const ShoppingCart = ({ isOpen, closeCart }: ShoppingCartProps) => {
           <p className="text-center text-gray-500">Shopping cart is empty</p>
         ) : (
           cartItems.map((item) => (
-            <CartItem product={item} removeButton={true} />
+            <CartItem product={item} showButtons={true} />
           ))
         )}
       </div>

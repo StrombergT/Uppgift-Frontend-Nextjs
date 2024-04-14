@@ -3,6 +3,6 @@ import { cartState } from "../recoil/state/atoms";
 import { Product } from "../types";
 
 export const useShoppingCartProducts = (): Product[] => {
-  const cartItems = useRecoilValue<Product[]>(cartState);
-  return cartItems;
+  const cartItem = useRecoilValue<Product[]>(cartState);
+  return cartItem;
 };

@@ -2,13 +2,12 @@
 import Link from "next/link";
 import CartItem from "@/src/components/CartItem";
 import { useRecoilValue } from "recoil";
-import { Product } from "@/src/types";
-import { cartState } from "@/src/recoil/state/atoms";
 import { formatCurrency } from "@/src/utilities/formatCurrency";
 import { shoppingCartTotalState } from "@/src/recoil/state/selectors/shopping-cart-total";
+import { useShoppingCartProducts } from "@/src/hooks/useShoppingCartProducts";
 
 const CheckoutPage = () => {
-  const cartItems = useRecoilValue<Product[]>(cartState);
+  const cartItem = useShoppingCartProducts();
   const totalPrice = useRecoilValue(shoppingCartTotalState);
 
   return (
@@ -20,8 +19,8 @@ const CheckoutPage = () => {
         Your buy has been successfully processed.
       </p>
       <div className="w-full max-w-xl">
-        {cartItems.map((item) => (
-          <CartItem key={item.id} product={item} removeButton={false} />
+        {cartItem.map((item) => (
+          <CartItem product={item} showButtons={false} />
         ))}
       </div>
       <div className="flex-grow">
