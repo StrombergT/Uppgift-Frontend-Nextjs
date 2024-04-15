@@ -3,8 +3,8 @@ import Link from "next/link";
 import CartItem from "@/src/components/CartItem";
 import { useRecoilValue } from "recoil";
 import { formatCurrency } from "@/src/utilities/formatCurrency";
-import { shoppingCartTotalState } from "@/src/recoil/state/selectors/shopping-cart-total";
 import { useShoppingCartProducts } from "@/src/hooks/useShoppingCartProducts";
+import { shoppingCartTotalState } from "@/src/lib/recoil/state/selectors/shopping-cart-total";
 
 const CheckoutPage = () => {
   const cartItem = useShoppingCartProducts();
@@ -28,10 +28,11 @@ const CheckoutPage = () => {
           <div className="text-2xl font-bold mb-4 justify-center text-white">
             Total Price: {formatCurrency(totalPrice)}
           </div>
-          <Link href="/">
-            <button className="bg-gray-500 hover:bg-gray-900 text-white rounded-full py-3 px-6 w-full ml-5 max-w-[280px] uppercase mt-5">
-              Back to Homepage
-            </button>
+          <Link
+            href="/"
+            className="bg-gray-500 hover:bg-gray-900 text-white rounded-full w-full uppercase m-auto flex flex-col justify-center items-center p-2"
+          >
+            Back to Homepage
           </Link>
         </div>
       </div>

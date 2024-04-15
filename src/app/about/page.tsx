@@ -1,4 +1,4 @@
-import request from "@/src/lib/datocms";
+import request from "@/src/lib/datocms/datocms";
 import { AboutPage } from "@/src/types";
 import { Image, StructuredText } from "react-datocms";
 

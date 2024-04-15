@@ -1,6 +1,6 @@
 import { Image, StructuredText } from "react-datocms";
 import { StartPage } from "@/src/types";
-import request from "../lib/datocms";
+import request from "../lib/datocms/datocms";
 
 const Homepage = async () => {
   const query = `

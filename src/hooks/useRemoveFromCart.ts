@@ -1,6 +1,7 @@
 import { useSetRecoilState } from "recoil";
-import { cartState } from "../recoil/state/atoms";
+
 import { useCallback } from "react";
+import { cartState } from "../lib/recoil/state/atoms";
 
 export const useRemoveFromCart = () => {
   const setCartItems = useSetRecoilState(cartState);

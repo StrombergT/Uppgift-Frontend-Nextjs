@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { BsBag } from "react-icons/bs";
 import ShoppingCart from "../ShoppingCart";
 import { useRecoilValue } from "recoil";
-import { cartState } from "../../recoil/state/atoms";
+import { cartState } from "@/src/lib/recoil/state/atoms";
 
 const Nav = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);

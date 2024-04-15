@@ -1,6 +1,7 @@
 import { useSetRecoilState } from "recoil";
-import { cartState } from "../recoil/state/atoms";
+
 import { Product } from "../types";
+import { cartState } from "../lib/recoil/state/atoms";
 
 export const useShoppingCartUpdateProducts = () => {
   const setShoppingCartProducts = useSetRecoilState(cartState);

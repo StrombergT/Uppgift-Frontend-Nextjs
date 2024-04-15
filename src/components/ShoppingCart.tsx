@@ -4,8 +4,9 @@ import CartItem from "./CartItem";
 import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
 import { formatCurrency } from "../utilities/formatCurrency";
-import { shoppingCartTotalState } from "../recoil/state/selectors/shopping-cart-total";
+
 import { useShoppingCartProducts } from "../hooks/useShoppingCartProducts";
+import { shoppingCartTotalState } from "../lib/recoil/state/selectors/shopping-cart-total";
 
 type ShoppingCartProps = {
   isOpen: boolean;
@@ -43,7 +44,7 @@ const ShoppingCart = ({ isOpen, closeCart }: ShoppingCartProps) => {
             </div>
             <Link
               href="/checkout"
-              className="bg-gray-500 hover:bg-gray-800 text-white rounded-full w-full max-w-[280px] uppercase m-auto flex flex-col justify-center items-center p-2"
+              className="bg-gray-500 hover:bg-gray-800 text-white rounded-full w-full uppercase m-auto flex flex-col justify-center items-center p-2"
             >
               Buy
             </Link>

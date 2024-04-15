@@ -1,5 +1,5 @@
 import AddToCart from "@/src/components/ui/AddToCart";
-import request from "@/src/lib/datocms";
+import request from "@/src/lib/datocms/datocms";
 import { Product } from "@/src/types";
 import { formatCurrency } from "@/src/utilities/formatCurrency";
 import Link from "next/link";
