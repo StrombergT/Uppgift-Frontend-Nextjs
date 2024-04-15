@@ -1,8 +1,8 @@
-import request from "../../src/lib/datocms";
 import Link from "next/link";
 import { Image } from "react-datocms";
 import { Product } from "@/src/types";
 import { formatCurrency } from "@/src/utilities/formatCurrency";
+import request from "@/src/lib/datocms";
 
 const Productspage = async () => {
   const query = `

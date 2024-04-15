@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Nav from "../src/components/Nav";
+
 import RecoilContextProvider from "@/src/context/RecoilContextProvider";
 import Footer from "@/src/components/Footer";
+import Nav from "../components/Nav";
 
 const poppins = Poppins({
   subsets: ["latin"],
