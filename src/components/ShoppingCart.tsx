@@ -41,10 +41,11 @@ const ShoppingCart = ({ isOpen, closeCart }: ShoppingCartProps) => {
             <div className="p-4 font-primary font-semibold text-xl justify-center text-center">
               Total Price: {formatCurrency(totalPrice)}
             </div>
-            <Link href="/checkout">
-              <button className="bg-gray-500 hover:bg-gray-800 text-white rounded-full py-3 px-6 w-full ml-5 max-w-[280px] uppercase mt-5">
-                Buy
-              </button>
+            <Link
+              href="/checkout"
+              className="bg-gray-500 hover:bg-gray-800 text-white rounded-full w-full max-w-[280px] uppercase m-auto flex flex-col justify-center items-center p-2"
+            >
+              Buy
             </Link>
           </div>
         </>

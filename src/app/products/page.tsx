@@ -36,7 +36,7 @@ const Productspage = async () => {
     query,
     preview: false,
   });
-  const products: Product[] = data.allProducts;
+  const products = data.allProducts;
 
   return (
     <section className="bg-gray-800">

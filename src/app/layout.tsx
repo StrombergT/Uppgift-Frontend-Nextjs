@@ -3,8 +3,8 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 
 import RecoilContextProvider from "@/src/context/RecoilContextProvider";
-import Footer from "@/src/components/Footer";
-import Nav from "../components/Nav";
+import Nav from "../components/layout/Nav";
+import Footer from "../components/layout/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
