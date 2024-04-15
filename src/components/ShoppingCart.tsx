@@ -31,7 +31,7 @@ const ShoppingCart = ({ isOpen, closeCart }: ShoppingCartProps) => {
           <p className="text-center text-gray-500">Shopping cart is empty</p>
         ) : (
           cartItems.map((item) => (
-            <CartItem product={item} showButtons={true} />
+            <CartItem key={item.id} product={item} showButtons={true} />
           ))
         )}
       </div>
@@ -42,7 +42,7 @@ const ShoppingCart = ({ isOpen, closeCart }: ShoppingCartProps) => {
               Total Price: {formatCurrency(totalPrice)}
             </div>
             <Link href="/checkout">
-              <button className="bg-blue-500 hover:bg-blue-600 text-white rounded-full py-3 px-6 w-full ml-5 max-w-[280px] uppercase mt-5">
+              <button className="bg-gray-500 hover:bg-gray-800 text-white rounded-full py-3 px-6 w-full ml-5 max-w-[280px] uppercase mt-5">
                 Buy
               </button>
             </Link>
