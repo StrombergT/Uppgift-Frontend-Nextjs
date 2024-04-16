@@ -2,6 +2,7 @@
 import React from "react";
 import { Product } from "../../types";
 import { useShoppingCartUpdateProducts } from "../../hooks/useShoppingCartUpdateProducts";
+import { Button } from "@/src/components/ui/button";
 
 type AddToCartProps = {
   product: Product;
@@ -12,12 +13,12 @@ const AddToCart = ({ product }: AddToCartProps) => {
 
   return (
     <div className="container mx-auto flex items-center mt-4">
-      <button
+      <Button
+        className="uppercase font-semibold"
         onClick={() => updateProducts(product)}
-        className="ml-4 bg-[#0c2d48] rounded-md text-white py-2 px-4 sm:px-8 uppercase"
       >
         Add to cart
-      </button>
+      </Button>
     </div>
   );
 };

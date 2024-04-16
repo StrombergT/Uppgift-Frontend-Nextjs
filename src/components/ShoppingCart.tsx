@@ -1,63 +1,77 @@
 "use client";
 import { useRecoilValue } from "recoil";
 import CartItem from "./CartItem";
-import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
-import { formatCurrency } from "../utilities/formatCurrency";
-
+import { formatCurrency } from "../lib/formatCurrency";
 import { useShoppingCartProducts } from "../hooks/useShoppingCartProducts";
 import { shoppingCartTotalState } from "../lib/recoil/state/selectors/shopping-cart-total";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet";
 
-type ShoppingCartProps = {
-  isOpen: boolean;
-  closeCart: () => void;
-};
+import { BsBag } from "react-icons/bs";
+import { cartState } from "../lib/recoil/state/atoms";
+import { ScrollArea } from "@/src/components/ui/scroll-area";
+import { Button, buttonVariants } from "@/src/components/ui/button";
 
-const ShoppingCart = ({ isOpen, closeCart }: ShoppingCartProps) => {
+const ShoppingCart = () => {
   const cartItems = useShoppingCartProducts();
   const totalPrice = useRecoilValue(shoppingCartTotalState);
+  const quantity = useRecoilValue(cartState);
+
+  const totalQuantity = quantity.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   return (
-    <div
-      className={`fixed top-0 right-0 h-full w-80 bg-white z-50 transform transition-transform duration-300 rounded-lg mt-0 ${
-        isOpen ? "translate-x-0" : "translate-x-full"
-      }`}
-    >
-      <div className="p-8 justify-between items-center">
-        <h1 className="text-lg font-bold mb-4 uppercase text-center">
-          Shopping Cart
-        </h1>
-        <hr />
-        {cartItems.length === 0 ? (
-          <p className="text-center text-gray-500">Shopping cart is empty</p>
-        ) : (
-          cartItems.map((item) => (
-            <CartItem key={item.id} product={item} showButtons={true} />
-          ))
-        )}
-      </div>
-      {cartItems.length > 0 && (
-        <>
-          <div className="absolute bottom-10 left-0 right-0">
-            <div className="p-4 font-primary font-semibold text-xl justify-center text-center">
-              Total Price: {formatCurrency(totalPrice)}
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button className=" text-white bg-gray-900 border-gray-700 hover:bg-gray-800 focus:ring-gray-800">
+          <BsBag className="text-[18px] text-white" />
+          {totalQuantity > 0 && (
+            <div className="bg-red-500 w-[18px] h-[18px] absolute rounded-full text-white flex items-center justify-center text-sm font-medium mb-6 ml-8">
+              {totalQuantity}
+            </div>
+          )}
+        </Button>
+      </SheetTrigger>
+      <SheetContent>
+        <ScrollArea className="h-[70vh] xl:h-[74vh] pr-4 mb-4">
+          <SheetHeader>
+            <SheetTitle>Shopping Cart</SheetTitle>
+          </SheetHeader>
+          <hr />
+          {cartItems.length === 0 ? (
+            <div className="flex flex-col items-center justify-center w-full h-[760px]">
+              <h5 className="text-black/50">Shopping cart is empty</h5>
+            </div>
+          ) : (
+            cartItems.map((item) => (
+              <CartItem key={item.id} product={item} showButtons={true} />
+            ))
+          )}
+        </ScrollArea>
+        {cartItems.length > 0 && (
+          <>
+            <div className="flex justify-between font-semibold">
+              <div className="uppercase mb-5">Total Price:</div>
+              <div>{formatCurrency(totalPrice)}</div>
             </div>
             <Link
               href="/checkout"
-              className="bg-gray-500 hover:bg-gray-800 text-white rounded-full w-full uppercase m-auto flex flex-col justify-center items-center p-2"
+              className="bg-gray-800 hover:bg-gray-900 text-white rounded-lg w-full uppercase m-auto flex flex-col justify-center items-center p-2"
             >
               Buy
             </Link>
-          </div>
-        </>
-      )}
-      <button
-        className="absolute top-4 right-3 text-gray-600 "
-        onClick={closeCart}
-      >
-        <IoMdClose />
-      </button>
-    </div>
+          </>
+        )}
+      </SheetContent>
+    </Sheet>
   );
 };
 

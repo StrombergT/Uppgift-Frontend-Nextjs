@@ -1,10 +1,11 @@
 import React from "react";
 import { Image } from "react-datocms";
 import { FaTrash, FaPlus, FaMinus } from "react-icons/fa";
-import { formatCurrency } from "../utilities/formatCurrency";
+import { formatCurrency } from "../lib/formatCurrency";
 import { useRemoveFromCart } from "../hooks/useRemoveFromCart";
 import { Product } from "../types";
 import { useShoppingCartActions } from "../hooks/useShoppingCartActions";
+import { FaX } from "react-icons/fa6";
 
 type CartItemProps = {
   product: Product;
@@ -16,29 +17,39 @@ const CartItem = ({ product, showButtons = true }: CartItemProps) => {
   const { increaseItem, decreaseItem } = useShoppingCartActions();
 
   return (
-    <div className="flex justify-start items-center my-2 border-b border-gray-200">
-      <div className="w-16 h-16 mr-4">
-        <Image data={product.mainImage.responsiveImage} />
+    <div className="flex w-full justify-between mb-4 items-center h[120px] border-b">
+      <div className="w-[110px] h-[110px] relative flex flex-col justify-center gap-4">
+        <Image
+          data={product.mainImage.responsiveImage}
+          sizes="(max-width: 110px) 110px, 110px"
+          className="object-contain"
+        />
       </div>
-      <div className="flex flex-col flex-grow justify-center items-start">
-        <h3 className="font-semibold">{product.name}</h3>
-        <p className="text-gray-500">
-          {formatCurrency(product.price)} <span>x {product.quantity}</span>
-        </p>
-      </div>
-      {showButtons && (
-        <div className="flex items-center ml-auto space-x-2">
-          <button onClick={() => decreaseItem(product.id)}>
-            <FaMinus />
-          </button>
-          <button onClick={() => increaseItem(product.id)} className="ml-2">
-            <FaPlus />
-          </button>
-          <button onClick={() => removeFromCart(product.id)}>
-            <FaTrash />
-          </button>
+      <div className="w-full max-w-[180]px ml-5">
+        <div className="flex items-center justify-between">
+          <h5 className="font-semibold">{product.name}</h5>
         </div>
-      )}
+        {showButtons && (
+          <div className="flex items-center justify-between">
+            <div className="flex gap-4">
+              <button onClick={() => decreaseItem(product.id)}>
+                <FaMinus className="text-[10px]" />
+              </button>
+              <div className="font-semibold">{product.quantity}</div>
+              <button onClick={() => increaseItem(product.id)}>
+                <FaPlus className="text-[10px]" />
+              </button>
+            </div>
+
+            <div className="font-semibold text-black text-right">
+              {formatCurrency(product.price * product.quantity)}
+            </div>
+            <button onClick={() => removeFromCart(product.id)}>
+              <FaX className="text-sm" />
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
