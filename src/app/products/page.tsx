@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { Image } from "react-datocms";
 import { Product } from "@/src/types";
-import { formatCurrency } from "@/src/lib/formatCurrency";
 import request from "@/src/lib/datocms/datocms";
+import { formatCurrency } from "@/src/lib/formatCurrency";
+import { HeadTitle, Paragraph } from "@/src/components/Text/TextComponent";
 
 const Productspage = async () => {
   const query = `
@@ -42,15 +43,13 @@ const Productspage = async () => {
     <section className="bg-gray-800">
       <div className="max-w-screen-xl px-4 py-8 mx-auto lg:py-24 lg:px-6">
         <div className="max-w-screen-md mx-auto mb-8 text-center lg:mb-12">
-          <h2 className="mb-4 text-3xl font-extrabold tracking-tight  text-white">
-            Products
-          </h2>
-          <p className="mb-5 font-light sm:text-xl text-gray-400">
+          <HeadTitle>Products</HeadTitle>
+          <Paragraph>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam
             maxime fugit quas neque perspiciatis cupiditate unde voluptatibus
             sunt nesciunt, nihil magnam commodi beatae corrupti expedita
             deleniti cumque dolores illo qui?
-          </p>
+          </Paragraph>
         </div>
         <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
           {products.map((product) => (

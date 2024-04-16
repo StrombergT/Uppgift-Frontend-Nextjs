@@ -1,6 +1,6 @@
 import React from "react";
 import { Image } from "react-datocms";
-import { FaTrash, FaPlus, FaMinus } from "react-icons/fa";
+import { FaPlus, FaMinus } from "react-icons/fa";
 import { formatCurrency } from "../lib/formatCurrency";
 import { useRemoveFromCart } from "../hooks/useRemoveFromCart";
 import { Product } from "../types";

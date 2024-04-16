@@ -1,3 +1,4 @@
+import { HeadTitle } from "@/src/components/Text/TextComponent";
 import request from "@/src/lib/datocms/datocms";
 import { AboutPage } from "@/src/types";
 import { Image, StructuredText } from "react-datocms";
@@ -37,9 +38,7 @@ const Aboutpage = async () => {
           <Image data={page.mainImage.responsiveImage} />
         </div>
         <div className="ml-auto place-self-center lg:col-span-7">
-          <h1 className="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl text-white">
-            {page.title}
-          </h1>
+          <HeadTitle>{page.title}</HeadTitle>
           <div className="max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl text-gray-400">
             <StructuredText data={page.content.value} />
           </div>
