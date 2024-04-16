@@ -1,7 +1,7 @@
 import AddToCart from "@/src/components/ui/AddToCart";
 import request from "@/src/lib/datocms/datocms";
+import { formatCurrency } from "@/src/lib/formatCurrency";
 import { Product } from "@/src/types";
-import { formatCurrency } from "@/src/utilities/formatCurrency";
 import Link from "next/link";
 import { Image, StructuredText } from "react-datocms";
 import { CgChevronLeft } from "react-icons/cg";

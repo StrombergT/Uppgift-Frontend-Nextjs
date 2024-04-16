@@ -26,9 +26,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.variable}>
         <RecoilContextProvider>
-          <Nav />
-          {children}
-          <Footer />
+          <main className="bg-gray-900 ">
+            <Nav />
+            {children}
+            <Footer />
+          </main>
         </RecoilContextProvider>
       </body>
     </html>

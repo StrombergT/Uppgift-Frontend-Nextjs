@@ -2,7 +2,7 @@
 import Link from "next/link";
 import CartItem from "@/src/components/CartItem";
 import { useRecoilValue } from "recoil";
-import { formatCurrency } from "@/src/utilities/formatCurrency";
+import { formatCurrency } from "@/src/lib/formatCurrency";
 import { useShoppingCartProducts } from "@/src/hooks/useShoppingCartProducts";
 import { shoppingCartTotalState } from "@/src/lib/recoil/state/selectors/shopping-cart-total";
 
